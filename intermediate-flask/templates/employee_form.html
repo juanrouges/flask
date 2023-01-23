@@ -1,0 +1,25 @@
+{% extends "root.html" %}
+
+<!-- main -->
+{% block main %}
+<div class="container">
+  <h1>Add Employee</h1>
+  <p>Add a new employee to Lukcy Lotus directory</p>
+
+  <div>
+    <form action="" method="POST">
+      {{ form.hidden_tag() }}
+      <!--  -->
+      {% for field in form if field.widget.input_type != 'hidden'%}
+      <div class="form_group mb-2">
+        <!-- label and input -->
+        {{field.label}} {{field}}
+        <!-- error if any -->
+        {% for error in field.errors %} {{error}} {% endfor %}
+      </div>
+      {% endfor %}
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

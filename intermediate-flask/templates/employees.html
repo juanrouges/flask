@@ -1,0 +1,28 @@
+{% extends "root.html" %}
+
+<!-- main -->
+{% block main %}
+<div class="mb-4">
+  <h1>Employees</h1>
+  <p>List of all awesome Lucky Lotus employees</p>
+  <a class="btn btn-primary" href="/employees/new">Add Employee</a>
+</div>
+
+{% if employees %}
+<table class="table">
+  <tr>
+    <td>Name</td>
+    <td>Province</td>
+    <td>Salary</td>
+    <td>Deparment</td>
+  </tr>
+  {% for employee in employees %}
+  <tr>
+    <td>{{employee.name}}</td>
+    <td>{{employee.province}}</td>
+    <td>{{employee.salary}}</td>
+    <td>{{employee.department}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %} {% endblock %}
