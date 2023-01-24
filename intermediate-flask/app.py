@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, flash
-from models import db, connect_db, Employee
+from models import db, connect_db, Employee, Department
 from forms import AddEmployeeForm
+from resources import UnitedStates
 
 app = Flask(__name__)
 app.app_context().push()
@@ -15,6 +16,8 @@ app.config["SQLALCHEMY_ECHO"]                 = False
 
 connect_db(app)
 
+# staff_choices=[("", ""), ('1', 'John Thomas'), ('2', 'Chris Davis'), ('3', 'Lyn Taco')]
+
 @app.route("/")
 def index():
   return render_template("index.html")
@@ -27,6 +30,10 @@ def employees():
 @app.route("/employees/new", methods=["GET", "POST"])
 def employee_new():
   form = AddEmployeeForm()
+  all_depts = Department.query.all()
+  depts = [(dept.dept_code, dept.dept_name) for dept in all_depts]
+  form.department.choices = depts
+  form.province.choices = UnitedStates.states
   if form.validate_on_submit():
     name = form.name.data
     province = form.province.data
