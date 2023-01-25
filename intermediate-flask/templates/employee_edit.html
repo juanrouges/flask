@@ -1,0 +1,29 @@
+{% extends "root.html" %}
+
+<!-- main -->
+{% block main %}
+<div class="row">
+  <div class="col-12 col-lg-8 offset-lg-2">
+    <h1>Edit Employee</h1>
+    <p>Edit employee at Lukcy Lotus directory</p>
+
+    <div>
+      <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        <!--  -->
+        {% for field in form if field.widget.input_type != 'hidden'%}
+        <div class="form_group mb-2">
+          <!-- label and input -->
+          {{field.label}} {{field(class_="form-control")}}
+          <!-- error if any -->
+          {% for error in field.errors %}
+          <div class="error">{{error}}</div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+        <button class="btn btn-primary mt-2" type="submit">Add Employee</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -15,6 +15,7 @@
     <td>Province</td>
     <td>Salary</td>
     <td>Deparment</td>
+    <td></td>
   </tr>
   {% for employee in employees %}
   <tr>
@@ -22,6 +23,7 @@
     <td>{{employee.province}}</td>
     <td>{{employee.salary}}</td>
     <td>{{employee.department}}</td>
+    <td><a href="/employees/{{employee.id}}/edit">Edit</a></td>
   </tr>
   {% endfor %}
 </table>

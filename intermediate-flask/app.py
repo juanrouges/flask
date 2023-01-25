@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, flash
 from models import db, connect_db, Employee, Department
-from forms import AddEmployeeForm
+from forms import EmployeeForm
 from resources import UnitedStates
 
 app = Flask(__name__)
@@ -29,7 +29,7 @@ def employees():
 
 @app.route("/employees/new", methods=["GET", "POST"])
 def employee_new():
-  form = AddEmployeeForm()
+  form = EmployeeForm()
   all_depts = Department.query.all()
   depts = [(dept.dept_code, dept.dept_name) for dept in all_depts]
   form.department.choices = depts
@@ -46,6 +46,24 @@ def employee_new():
     return redirect("/employees")
   else:
     return render_template("employee_form.html", form=form)
+
+@app.route("/employees/<int:employee_id>/edit", methods=["GET", "POST"])
+def edit_employee(employee_id):
+  employee = Employee.query.get_or_404(employee_id)
+  form = EmployeeForm(obj=employee)
+  all_depts = Department.query.all()
+  depts = [(dept.dept_code, dept.dept_name) for dept in all_depts]
+  form.department.choices = depts
+  form.province.choices = UnitedStates.states
+  if form.validate_on_submit():
+    employee.name = form.name.data
+    employee.province = form.province.data
+    employee.department = form.department.data
+    employee.salary = form.salary.data
+    db.session.commit()
+    return redirect("/employees")
+  else:
+    return render_template("employee_edit.html", form=form)
 
 @app.route("/about")
 def about():

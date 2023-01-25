@@ -15,6 +15,17 @@ header h1 {
   font-weight: bold;
 }
 
+header nav {
+  margin-left: auto;
+}
+
+header nav a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0 12px;
+}
+
 form label {
   display: block;
 }
