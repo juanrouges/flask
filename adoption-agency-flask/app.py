@@ -37,6 +37,8 @@ def pet_add():
                    notes=notes, 
                    available=available
                   )
+    db.session.add(new_pet)
+    db.session.commit()
     flash(f"{name} was added to adoption agency directory")
     return redirect("/")
   else:

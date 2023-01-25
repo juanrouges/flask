@@ -53,6 +53,10 @@ header nav a {
   font-weight: 700;
 }
 
+.card {
+  margin-bottom: 24px;
+}
+
 .card img {
   width: 100%;
   border-radius: 6px 6px 0 0;
