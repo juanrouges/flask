@@ -1,0 +1,19 @@
+{% extends "root.html" %}
+
+<!-- main -->
+{% block main %}
+<div class="row mt-4">
+  <div class="col-12 col-lg-3">
+    <img class="W-100 rounded" src="{{pet.photo_url}}" alt="" />
+  </div>
+  <div class="col-12 col-lg-9">
+    <div>{{pet.available}}</div>
+    <h1>{{pet.name}}</h1>
+    <div>{{pet.species}}</div>
+    <div class="mt-4">
+      <p>{{pet.notes}}</p>
+    </div>
+    <a href="/{{pet.id}}/edit" class="btn btn-primary">Edit</a>
+  </div>
+</div>
+{% endblock %}

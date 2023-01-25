@@ -20,6 +20,11 @@ def index():
   pets = Pet.query.all()
   return render_template("index.html", pets=pets)
 
+@app.route("/<int:pet_id>")
+def pet_info(pet_id):
+  pet = Pet.query.get_or_404(pet_id)
+  return render_template("pet.html", pet=pet)
+
 @app.route("/add", methods=["GET", "POST"])
 def pet_add():
   form = PetForm()

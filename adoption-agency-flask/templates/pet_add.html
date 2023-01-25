@@ -11,35 +11,38 @@
     <form method="POST" class="form">
       {{form.hidden_tag()}}
       <div class="mb-2">
-        {{form.name.label}} {{form.name(class_="form-control")}}
+        {{form.name.label}} {{form.name(class_="form-control form-control-lg")}}
         <!--  -->
         {% for error in form.name.errors %}
         <div class="error">{{error}}</div>
         {% endfor %}
       </div>
       <div class="mb-2">
-        {{form.species.label}} {{form.species(class_="form-control")}}
+        {{form.species.label}} {{form.species(class_="form-control
+        form-control-lg")}}
         <!--  -->
         {% for error in form.species.errors %}
         <div class="error">{{error}}</div>
         {% endfor %}
       </div>
       <div class="mb-2">
-        {{form.photo_url.label}} {{form.photo_url(class_="form-control")}}
+        {{form.photo_url.label}} {{form.photo_url(class_="form-control
+        form-control-lg")}}
         <!--  -->
         {% for error in form.photo_url.errors %}
         <div class="error">{{error}}</div>
         {% endfor %}
       </div>
       <div class="mb-2">
-        {{form.age.label}} {{form.age(class_="form-control")}}
+        {{form.age.label}} {{form.age(class_="form-control form-control-lg")}}
         <!--  -->
         {% for error in form.age.errors %}
         <div class="error">{{error}}</div>
         {% endfor %}
       </div>
       <div class="mb-2">
-        {{form.notes.label}} {{form.notes(class_="form-control")}}
+        {{form.notes.label}} {{form.notes(class_="form-control
+        form-control-lg")}}
         <!--  -->
         {% for error in form.notes.errors %}
         <div class="error">{{error}}</div>
@@ -57,18 +60,6 @@
       <div class="mt-4">
         <button class="btn btn-primary">Add Pet</button>
       </div>
-      {# {% for field in form if field.widget.input_type != 'hidden' %}
-      <div class="mb-2">
-        {{field.label(class_="small")}} {{field(class_="form-control")}} {% for
-        error in field.errors %}
-        <div class="error">{{error}}</div>
-        {% endfor %}
-      </div>
-      {% endfor %}
-      <div class="mt-4">
-        <button class="btn btn-primary">Add Pet</button>
-      </div>
-      #}
     </form>
   </div>
 </div>
