@@ -3,7 +3,11 @@
 <!-- main -->
 {% block main %}
 
-<h1>Our Pets</h1>
+<div class="hero">
+  <h1>Adoption directory</h1>
+  <div class="action"><a class="btn btn-primary" href="/add">Add Pet</a></div>
+</div>
+
 <div class="row">
   {% for pet in pets %}
   <div class="col-3">
