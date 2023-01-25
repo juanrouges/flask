@@ -1,0 +1,58 @@
+body {
+  background-color: aliceblue;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.page-wrapper {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: blueviolet;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+header nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+header nav a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0 12px;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #f2f2f2;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card .info {
+  padding: 12px;
+}
+
+.card .info h4 {
+  margin-bottom: 0;
+  font-weight: bold;
+}

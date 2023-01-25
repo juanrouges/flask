@@ -1,0 +1,26 @@
+{% extends "root.html" %}
+
+<!-- main -->
+{% block main %}
+
+<h1>Our Pets</h1>
+<div class="row">
+  {% for pet in pets %}
+  <div class="col-3">
+    <div class="card">
+      <img
+        src="{{pet.photo_url}}"
+        alt="{{pet.name}}"
+        width="250"
+        height="250"
+      />
+      <div class="info">
+        <h4>{{pet.name}}</h4>
+        <div>{{pet.species}}</div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
