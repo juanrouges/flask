@@ -25,6 +25,23 @@ def pet_info(pet_id):
   pet = Pet.query.get_or_404(pet_id)
   return render_template("pet.html", pet=pet)
 
+@app.route("/<int:pet_id>/edit", methods=["GET", "POST"])
+def pet_edit_info(pet_id):
+  pet = Pet.query.get_or_404(pet_id)
+  form = PetForm(obj=pet)
+  if form.validate_on_submit():
+    pet.name = form.name.data
+    pet.species = form.species.data
+    pet.photo_url = form.photo_url.data
+    pet.age = form.age.data
+    pet.notes = form.notes.data
+    pet.available = form.available.data
+    db.session.commit()
+    flash(f"{pet.name} was succesfully updated")
+    return redirect(f"/{pet_id}")
+  else:
+    return render_template("pet_edit.html", form=form, pet=pet)
+
 @app.route("/add", methods=["GET", "POST"])
 def pet_add():
   form = PetForm()

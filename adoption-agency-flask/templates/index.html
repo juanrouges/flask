@@ -11,7 +11,7 @@
 <div class="row">
   {% for pet in pets %}
   <div class="col-3">
-    <div class="card">
+    <a class="card" href="/{{pet.id}}">
       <img
         src="{{pet.photo_url}}"
         alt="{{pet.name}}"
@@ -27,7 +27,7 @@
         <h4>{{pet.name}}</h4>
         <div>{{pet.species}}</div>
       </div>
-    </div>
+    </a>
   </div>
   {% endfor %}
 </div>

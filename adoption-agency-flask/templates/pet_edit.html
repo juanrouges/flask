@@ -1,0 +1,67 @@
+{% extends "root.html" %}
+
+<!-- main -->
+{% block main %}
+
+<div class="row">
+  <div class="col-12 col-lg-6 offset-lg-3">
+    <div class="hero">
+      <h1>Edit {{pet.name}}</h1>
+    </div>
+    <form method="POST" class="form">
+      {{form.hidden_tag()}}
+      <div class="mb-2">
+        {{form.name.label}} {{form.name(class_="form-control form-control-lg")}}
+        <!--  -->
+        {% for error in form.name.errors %}
+        <div class="error">{{error}}</div>
+        {% endfor %}
+      </div>
+      <div class="mb-2">
+        {{form.species.label}} {{form.species(class_="form-control
+        form-control-lg")}}
+        <!--  -->
+        {% for error in form.species.errors %}
+        <div class="error">{{error}}</div>
+        {% endfor %}
+      </div>
+      <div class="mb-2">
+        {{form.photo_url.label}} {{form.photo_url(class_="form-control
+        form-control-lg")}}
+        <!--  -->
+        {% for error in form.photo_url.errors %}
+        <div class="error">{{error}}</div>
+        {% endfor %}
+      </div>
+      <div class="mb-2">
+        {{form.age.label}} {{form.age(class_="form-control form-control-lg")}}
+        <!--  -->
+        {% for error in form.age.errors %}
+        <div class="error">{{error}}</div>
+        {% endfor %}
+      </div>
+      <div class="mb-2">
+        {{form.notes.label}} {{form.notes(class_="form-control
+        form-control-lg")}}
+        <!--  -->
+        {% for error in form.notes.errors %}
+        <div class="error">{{error}}</div>
+        {% endfor %}
+      </div>
+      <div class="mb-2">
+        <div class="form-check">
+          {{form.available(class_="form-check-input")}}
+          {{form.available.label(class_="form-check-label")}}
+        </div>
+        {% for error in form.available.errors %}
+        <div class="error">{{error}}</div>
+        {% endfor %}
+      </div>
+      <div class="mt-4">
+        <button class="btn btn-primary">Add Pet</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
