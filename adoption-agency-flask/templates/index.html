@@ -15,6 +15,11 @@
         height="250"
       />
       <div class="info">
+        <div
+          class="label {% if pet.available %}available{% else %}adopted{% endif %}"
+        >
+          {% if pet.available %}available{% else %}adopted{% endif %}
+        </div>
         <h4>{{pet.name}}</h4>
         <div>{{pet.species}}</div>
       </div>

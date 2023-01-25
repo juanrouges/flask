@@ -39,17 +39,34 @@ header nav a {
   margin: 0 12px;
 }
 
-.card {
-  background-color: #fff;
-  border: 1px solid #f2f2f2;
-}
-
 .card img {
   width: 100%;
+  border-radius: 6px 6px 0 0;
+  border-bottom: 1px solid #ccc;
 }
 
 .card .info {
   padding: 12px;
+}
+
+.card .info .label {
+  background-color: #ccc;
+  border-radius: 3px;
+  width: fit-content;
+  font-size: small;
+  font-weight: 700;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.card .info .label.adopted {
+  background-color: #ffe5e5;
+  color: #b60707;
+}
+
+.card .info .label.available {
+  background-color: #e5ffeb;
+  color: #0aa521;
 }
 
 .card .info h4 {
