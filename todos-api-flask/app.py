@@ -17,4 +17,4 @@ connect_db(app)
 
 @app.route("/")
 def index():
-  return render_template("index.html", pets=pets)
+  return render_template("index.html")
