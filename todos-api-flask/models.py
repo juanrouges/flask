@@ -15,3 +15,9 @@ class Todo(db.Model):
   id = db.Column(db.Integer, primary_key=True, autoincrement=True)
   title = db.Column(db.Text, nullable=False)
   done = db.Column(db.Boolean, default=False, nullable=False)
+
+  def serialize(self):
+    return { "name": self.id, 
+              "title": self.title, 
+              "done": self.done
+            }

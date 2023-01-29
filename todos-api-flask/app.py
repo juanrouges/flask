@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, flash
+from flask import Flask, jsonify
 from models import db, connect_db, Todo
 # from forms import PetForm
 
@@ -15,6 +15,12 @@ app.config["SQLALCHEMY_ECHO"]                 = False
 
 connect_db(app)
 
-@app.route("/")
-def index():
-  return render_template("index.html")
+@app.route("/api/todos")
+def list_todos():
+  all_todos = [todo.serialize() for todo in Todo.query.all()]
+  return jsonify(todos=all_todos)
+
+@app.route("/api/todos/<int:id>")
+def get_todo(id):
+  todo = Todo.query.get_or_404(id).serialize()
+  return jsonify(todo=todo)
