@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from models import db, connect_db, Todo
 # from forms import PetForm
 
@@ -24,3 +24,11 @@ def list_todos():
 def get_todo(id):
   todo = Todo.query.get_or_404(id).serialize()
   return jsonify(todo=todo)
+
+@app.route("/api/todos", methods=["POST"])
+def add_todo():
+  new_todo = Todo(title=request.json["title"])
+  db.session.add(new_todo)
+  db.session.commit()
+  response_json = jsonify(new_todo.serialize())
+  return (response_json, 201)
