@@ -32,3 +32,7 @@ def add_todo():
   db.session.commit()
   response_json = jsonify(new_todo.serialize())
   return (response_json, 201)
+
+@app.route("/api/todos/<int:id>", methods=["PATCH"])
+def update_todo(id):
+  return (id)
