@@ -17,4 +17,5 @@ connect_db(app)
 
 @app.route("/api/cupcakes")
 def list_cupcakes():
-  return ("Hello World!")
+  all_cupcakes = [cupcake.serialize() for cupcake in Cupcake.query.all()]
+  return jsonify(cupcakes=all_cupcakes)
