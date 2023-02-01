@@ -35,3 +35,13 @@ def create_cupcake():
   db.session.commit()
   response_json = jsonify(new_cupcake.serialize())
   return (response_json, 201)
+
+@app.route("/api/cupcakes/<int:id>", methods=["PATCH"])
+def update_cupcake(id):
+  update_cupcake = Cupcake.query.get_or_404(id)
+  update_cupcake.flavor = request.json.get("flavor", update_cupcake.flavor)
+  update_cupcake.size   = request.json.get("size", update_cupcake.size)
+  update_cupcake.rating = request.json.get("rating", update_cupcake.rating)
+  update_cupcake.image  = request.json.get("image", update_cupcake.image)
+  db.session.commit()
+  return jsonify(update_cupcake.serialize())
