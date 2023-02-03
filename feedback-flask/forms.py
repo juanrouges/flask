@@ -1,3 +1,6 @@
+# =============== Why this? ===============
+from email_validator import validate_email
+# =========================================
 from flask_wtf import FlaskForm 
 from wtforms import StringField, EmailField, PasswordField
 from wtforms.validators import InputRequired, Email, Optional
