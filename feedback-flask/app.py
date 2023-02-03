@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from models import db, connect_db, User
 
 app =Flask(__name__)
@@ -13,4 +13,8 @@ connect_db(app)
 
 @app.route("/")
 def feedback_stream():
-    return render_template("index.html")
+    return redirect("/register")
+
+@app.route("/register")
+def user_register():
+    return render_template("register.html")
