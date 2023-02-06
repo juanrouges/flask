@@ -1,0 +1,36 @@
+{% extends "root.html" %}
+
+<!-- main -->
+{% block main %}
+<div class="row">
+  <div class="col-12 col-lg-6 offset-lg-3">
+    <h1><strong>Log In</strong></h1>
+    <p>User login form.</p>
+    <form class="form" action="" method="POST">
+      {{form.hidden_tag()}}
+
+      <div class="mb-2">
+        {{form.username.label}} {{form.username(class_="form-control
+        form-control-lg")}}
+        <!--  -->
+        {% for error in form.username.errors %}
+        <div class="error">{{error}}</div>
+        {% endfor %}
+      </div>
+
+      <div class="mb-2">
+        {{form.password.label}} {{form.password(class_="form-control
+        form-control-lg")}}
+        <!--  -->
+        {% for error in form.password.errors %}
+        <div class="error">{{error}}</div>
+        {% endfor %}
+      </div>
+
+      <button class="btn btn-lg btn-success mt-2" type="submit">
+        Register
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

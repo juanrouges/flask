@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect
 from models import db, connect_db, User
-from forms import RegisterForm
+from forms import RegisterForm, LoginForm
 
 app =Flask(__name__)
 app.app_context().push()
@@ -16,6 +16,16 @@ connect_db(app)
 @app.route("/")
 def feedback_stream():
     return redirect("/register")
+
+# LOGIN
+@app.route("/login", methods=["GET", "POST"])
+def user_login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return redirect("/about")
+    else:
+        return render_template("login.html", form=form)
+    
 
 # REGISTRATION
 @app.route("/register", methods=["GET", "POST"])
