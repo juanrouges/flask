@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, flash, session
 from models import db, connect_db, User
 from forms import RegisterForm, LoginForm
 
@@ -17,14 +17,41 @@ connect_db(app)
 def feedback_stream():
     return redirect("/register")
 
+# FEEDBACK
+@app.route("/feedback")
+def feedback_rules():
+    if "user_id" not in session:
+        flash("Please login first!")
+
+        return redirect("/login")
+
+    return render_template("/feedback.html")
+
 # LOGIN
 @app.route("/login", methods=["GET", "POST"])
 def user_login():
     form = LoginForm()
     if form.validate_on_submit():
-        return redirect("/about")
-    else:
-        return render_template("login.html", form=form)
+        username = form.username.data
+        password = form.password.data
+
+        user = User.authenticate(username, password)
+        if user:
+            flash(f"Welcome {user.first_name}")
+            session["user_id"] = user.id
+
+            return redirect("/feedback")
+        else:
+            form.username.errors = ["Invalid Username/Password"]
+    
+    return render_template("login.html", form=form)
+
+# Logout
+@app.route("/logout")
+def user_logout():
+    session.pop("user_id")
+    flash("Succesfully logged out!")
+    return redirect("/login")
     
 
 # REGISTRATION
@@ -43,11 +70,8 @@ def user_register():
         db.session.add(new_user)
         db.session.commit()
 
-        return redirect("/about")
+        flash("Your account was succesful created! Login now.")
+
+        return redirect("/login")
     else:
         return render_template("register.html", form=form)
-    
-# ABOUT
-@app.route("/about")
-def feedback_rules():
-    return render_template("/about.html")
