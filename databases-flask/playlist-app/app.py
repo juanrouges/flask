@@ -98,6 +98,20 @@ def add_song():
     """
 
     # ADD THE NECESSARY CODE HERE FOR THIS ROUTE TO WORK
+    form = SongForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        artist = form.artist.data
+
+        new_song = Song(title=title, artist=artist)
+
+        db.session.add(new_song)
+        db.session.commit()
+
+        return redirect("/songs")
+
+    # ADD THE NECESSARY CODE HERE FOR THIS ROUTE TO WORK
+    return render_template("new_song.html", form=form)
 
 
 @app.route("/playlists/<int:playlist_id>/add-song", methods=["GET", "POST"])
