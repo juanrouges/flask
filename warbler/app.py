@@ -215,6 +215,12 @@ def profile():
     """Update profile for current user."""
 
     # IMPLEMENT THIS
+    form = UserAddForm()
+
+    if form.validate_on_submit():
+        return print('Hello World')
+    else:
+        return render_template ("users/edit.html", form=form)
 
 
 @app.route('/users/delete', methods=["POST"])
